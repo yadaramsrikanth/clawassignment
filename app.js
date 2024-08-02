@@ -99,7 +99,7 @@ const authentication = (request, response, next) => {
 
 
 //GET
-app.get('/todos',authentication,async (request, response) => {
+app.get('/todos',async (request, response) => {
     const getProductQuery = `select * from to_do_items;`
     const productsArray = await db.all(getProductQuery)
     response.send(productsArray)
