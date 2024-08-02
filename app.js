@@ -88,7 +88,7 @@ const authentication = (request, response, next) => {
       jwt.verify(jwtToken, 'TOKEN', async (error, payload) => {
         if (error) {
           response.status(400)
-          response.send('Token not provided')
+          response.send('Token not provided, please login and after that access the content')
         } else {
           next()
         }
@@ -99,7 +99,7 @@ const authentication = (request, response, next) => {
 
 
 //GET
-app.get('/todos',async (request, response) => {
+app.get('/todos',authentication,async (request, response) => {
     const getProductQuery = `select * from to_do_items;`
     const productsArray = await db.all(getProductQuery)
     response.send(productsArray)
