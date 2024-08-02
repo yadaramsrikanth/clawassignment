@@ -83,7 +83,7 @@ const authentication = (request, response, next) => {
     }
     if (jwtToken === undefined) {
       response.status(400)
-      response.send('Token not Provided')
+      response.send('Token not provided, please login and after that access the content')
     } else {
       jwt.verify(jwtToken, 'TOKEN', async (error, payload) => {
         if (error) {
